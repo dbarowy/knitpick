@@ -16,6 +16,8 @@
 \usepackage[space]{grffile}
 \usepackage{booktabs}
 \usepackage{forest}
+\usepackage{array}
+
 
 % This will set LaTeX to look for figures in the same directory as the .tex file
 \graphicspath{.} % The dot means current directory.
@@ -277,6 +279,28 @@ times to repeat it in the row. After this, a user can define a chunk made up of 
 portion of the overall pattern. Finally, these chunks are repeated an arbitrary number of times to create the final grid. 
 The grid will be represented by an svg file that is imported into LaTeX to become part of the final pdf output.
 
+\subsection*{Minimal Semantics}
+
+\smallskip
+\begin{center}
+    \begin{tabular}{c|m{3.5cm}|c|c|m{4cm}}
+        
+        Syntax & Abstract Syntax & Type Syntax & Prec./assoc. & Meaning \\
+        \hline
+        \textit{n} & \texttt{Number of int} & \texttt{int} & n/a & \textit{n} is a primitive. We represent integers using the 32-bit F\# integer data type (int32). \\
+        \hline
+        'k' or 'p' & \texttt{Stitch of char} & \texttt{Stitch} & n/a & 'k' or 'p' represents either a knit or a purl stitch. We construct a Stitch object by keeping a (small) dictionary of stitches and their abbreviations. \\
+        \hline
+        \textit{sn} & \texttt{StitchSeq of char * int} & \texttt{StitchSeq} & n/a & \textit{sn} is a combining form that communicates a particular kind of stitch (knit or purl) and the number of times it should be performed. \\
+        \hline
+        +\textit{S} & \texttt{StitchSeq of char * StitchSeq} & \texttt{StitchSeq} & n/a & +\textit{S} is a kind of StitchSeq that indicates that the StitchSeq \textit{S} should be repeated until the end of the row. \\
+        \hline
+        (\textit{SS}) & \texttt{StitchSeq of StitchSeq * StitchSeq} & \texttt{StitchSeq} & n/a & (\textit{SS}) is a combining form that allows StitchSeqs to be chained for more complexity. \\
+
+
+    \end{tabular}
+\end{center}
+
 \newpage
 \textbf{iii.} 
 
@@ -357,6 +381,7 @@ Combining Forms
 
     Type Document = Header * Body
 \end{verbatim}
+
 
 
 \textbf{iv.}
