@@ -8,8 +8,6 @@ let main args =
 
     let result = parse s
 
-    
-
     match result with
     | Some sseq ->
         constructDoc sseq
