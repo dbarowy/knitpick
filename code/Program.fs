@@ -4,13 +4,13 @@ open System.IO
 
 [<EntryPoint>]
 let main args = 
-    let s = "+(p1(k3p2))"
+    let s = System.IO.File.ReadAllText "test.kpp"
 
     let result = parse s
 
     match result with
-    | Some sseq ->
-        constructDoc sseq
+    | Some ast ->
+        constructDoc ast
         exit 0
     | None -> 
         exit 1

@@ -1,35 +1,33 @@
 module Parser
 
 open Combinator
+open AST
 
-type Stitch = string * int
+let pstitchseq, pstitchseqImpl = recparser()
 
-type StitchSeq =
-    | StitchRep of Stitch * int
-    | StitchSeqToEnd of StitchSeq
-    | TwoStitchSeq of StitchSeq * StitchSeq
-
-let stitchseq, stitchseqImpl = recparser()
-
-let integer = pmany1 pdigit |>> (fun ds -> stringify ds |> int)
+let pinteger : Parser<Int> = pmany1 pdigit |>> (fun ds -> stringify ds |> int)
+let pstring : Parser<String> = pmany1 pitem |>> (fun cs -> stringify cs)
 
 let pad p = pbetween pws0 p pws0
 
-let purl = pchar 'p' |>> (fun _ -> Stitch ("purl", 0))
+let ppurl : Parser<Stitch> = pchar 'p' |>> (fun _ -> ("purl", 0))
+let pknit : Parser<Stitch> = pchar 'k' |>> (fun _ -> ("knit", 0))
 
-let knit = pchar 'k' |>> (fun _ -> Stitch ("knit", 0))
+let pstitch : Parser<Stitch> = pknit <|> ppurl
 
-let stitch = knit <|> purl
+let pstitchrep : Parser<StitchSeq> = pseq pstitch pinteger (fun (a, b) -> (a, b)) |>> (fun (a, b) -> StitchRep (a, b))
 
-let stitchrep = pseq stitch integer (fun (a, b) -> (a, b)) |>> (fun (a, b) -> StitchRep (a, b))
+let pstitchseqtoend : Parser<StitchSeq> = pright (pchar '+') (pstitchseq) |>> (fun s -> StitchSeqToEnd (s))
 
-let stitchseqtoend = pright (pchar '+') (stitchseq) |>> (fun s -> StitchSeqToEnd(s))
+let ptwostitchseq : Parser<StitchSeq> = pbetween (pchar '(') (pseq (pstitchseq) (pstitchseq) (fun (a, b) -> (a, b)))  (pchar ')') |>> (fun tup -> TwoStitchSeq (tup))
 
-let twostitchseq = pbetween (pchar '(') (pseq (stitchseq) (stitchseq) (fun (a, b) -> (a, b)))  (pchar ')') |>> (fun tup -> TwoStitchSeq(tup))
+pstitchseqImpl := pstitchrep <|> pstitchseqtoend <|> ptwostitchseq
 
-stitchseqImpl := stitchrep <|> stitchseqtoend <|> twostitchseq
+let prow : Parser<Row> = pmany1 (pleft (pad pstitchseq) pws0)
 
-let grammar = pleft stitchseq peof
+let pinst : Parser<Instruction> 
+
+let grammar = pleft prow peof
 
 let parse (s: string) = 
     let input = prepare s
