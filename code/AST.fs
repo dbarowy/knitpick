@@ -15,5 +15,9 @@ type StitchSeq =
 type Row = StitchSeq list
 
 type Instruction = 
-    | Row of Row
-    | String of String
+    | InstRow of Row
+    | InstString of String
+
+type Paragraph = String * Instruction list
+//type Paragraph = String
+// type Paragraph = Instruction list

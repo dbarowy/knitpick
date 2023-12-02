@@ -6,7 +6,11 @@ open AST
 let pstitchseq, pstitchseqImpl = recparser()
 
 let pinteger : Parser<Int> = pmany1 pdigit |>> (fun ds -> stringify ds |> int)
-let pstring : Parser<String> = pmany1 pitem |>> (fun cs -> stringify cs)
+
+let pnotquot: Parser<char> = psat (fun c -> c <> '"')
+let pstring : Parser<String> = pbetween (pchar '"') (pmany1 pnotquot) (pchar '"') |>> (fun cs -> stringify cs)
+
+let pinststring : Parser<Instruction> = pstring |>> (fun s -> InstString(s))
 
 let pad p = pbetween pws0 p pws0
 
@@ -23,11 +27,16 @@ let ptwostitchseq : Parser<StitchSeq> = pbetween (pchar '(') (pseq (pstitchseq) 
 
 pstitchseqImpl := pstitchrep <|> pstitchseqtoend <|> ptwostitchseq
 
-let prow : Parser<Row> = pmany1 (pleft (pad pstitchseq) pws0)
+let prow : Parser<Row> = pmany1 (pleft (pad pstitchseq) pws0) 
+let pinstrow : Parser<Instruction> = prow |>> (fun r -> InstRow(r))
 
-let pinst : Parser<Instruction> 
+let pinst : Parser<Instruction> = pinstrow <|> pinststring
 
-let grammar = pleft prow peof
+let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pleft (pad pinst) pws0)) (fun (s, is) -> Paragraph(s, is)) )
+// let ppara : Parser<Paragraph> = pright (pstr "pg ") (pstring) |>> (fun c -> string c)
+// let ppara : Parser<Paragraph> = pright (pstr "pg") (pmany1 (pleft (pad pinst) pws0))
+
+let grammar = pleft ppara peof
 
 let parse (s: string) = 
     let input = prepare s

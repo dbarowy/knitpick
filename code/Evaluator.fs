@@ -46,8 +46,31 @@ let evalRow (input: Row) : string =
         | x::xs -> (n |> string) + ". " + (evalStitchSeq x) + "\n" + (evaluate xs (n + 1))
     (evaluate input 1)
 
-let constructDoc (ast: Row) = 
+let evalInst (input: Instruction) : string = 
+    match input with
+    | InstRow r -> evalRow r
+    | InstString s -> s + "\n"
+
+let evalPara (input: Paragraph) : string = 
+    let rec evaluate is = 
+        match is with
+        | [] -> ""
+        | i::is -> (evalInst i) + (evaluate is)
+
+    match input with
+    | (s, is) -> "\\section*{" + s + "}" + "\n\n" + evaluate is
+
+(* let evalPara (input: Paragraph) : string = 
+    match input with 
+    | s -> s *)
+
+(* let rec evalPara (input: Paragraph) : string = 
+    match input with
+    | i::is -> (evalInst i) + (evalPara is)
+    | _ -> "" *)
+
+let constructDoc (ast: Paragraph) = 
     File.WriteAllText("output.tex", "")
     writeToFile startDoc
-    writeToFile (evalRow ast)
+    writeToFile (evalPara ast)
     writeToFile endDoc
