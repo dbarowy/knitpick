@@ -49,7 +49,7 @@ let evalRow (input: Row) : string =
 let evalInst (input: Instruction) : string = 
     match input with
     | InstRow r -> evalRow r
-    | InstString s -> s + "\n"
+    | InstString s -> s + "\n\n"
 
 let evalPara (input: Paragraph) : string = 
     let rec evaluate is = 

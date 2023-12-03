@@ -27,12 +27,12 @@ let ptwostitchseq : Parser<StitchSeq> = pbetween (pchar '(') (pseq (pstitchseq) 
 
 pstitchseqImpl := pstitchrep <|> pstitchseqtoend <|> ptwostitchseq
 
-let prow : Parser<Row> = pmany1 (pleft (pad pstitchseq) pws0) 
+let prow : Parser<Row> = pmany1 (pleft (pstitchseq) pws0) 
 let pinstrow : Parser<Instruction> = prow |>> (fun r -> InstRow(r))
 
 let pinst : Parser<Instruction> = pinstrow <|> pinststring
 
-let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pleft (pad pinst) pws0)) (fun (s, is) -> Paragraph(s, is)) )
+let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pad pinst)) (fun (s, is) -> Paragraph(s, is)) )
 // let ppara : Parser<Paragraph> = pright (pstr "pg ") (pstring) |>> (fun c -> string c)
 // let ppara : Parser<Paragraph> = pright (pstr "pg") (pmany1 (pleft (pad pinst) pws0))
 
