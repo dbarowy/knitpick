@@ -1,0 +1,8 @@
+pg "Body"
+    +(k3p3)
+    (p1+(k3p3))
+    (p2+(k3p3))
+    +(p3k3)
+    (k1+(p3k3))
+    (k2+(p3k3))
+    "repeat rows 1-6 to create diagonal lines."
