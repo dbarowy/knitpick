@@ -24,8 +24,8 @@ let startDoc =
 
 let endDoc = "\\end{document}\n"
 
-let writeToFile str = 
-    File.AppendAllText("output.tex", str)
+let writeToFile str name = 
+    File.AppendAllText(name + ".tex", str)
 
 let evalStitch (input: Stitch) : string =
     match input with
@@ -69,8 +69,8 @@ let evalPara (input: Paragraph) : string =
     | i::is -> (evalInst i) + (evalPara is)
     | _ -> "" *)
 
-let constructDoc (ast: Paragraph) = 
-    File.WriteAllText("output.tex", "")
-    writeToFile startDoc
-    writeToFile (evalPara ast)
-    writeToFile endDoc
+let constructDoc (ast: Paragraph) (name: string) = 
+    File.WriteAllText(name + ".tex", "")
+    writeToFile startDoc name
+    writeToFile (evalPara ast) name
+    writeToFile endDoc name
