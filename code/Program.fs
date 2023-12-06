@@ -5,7 +5,7 @@ open System.IO
 [<EntryPoint>]
 let main args = 
     
-    let s = "needle \"sp\" \"us\" 8"
+    let s = "yarn \"alpaca\" 4"
     let result = parse s
 
     match result with 

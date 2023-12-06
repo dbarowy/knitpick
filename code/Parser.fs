@@ -43,7 +43,9 @@ let pneedle : Parser<Needle> = pright (pstr "needle ") (pseq (pad (pstring)) (ps
 
 let pgauge : Parser<Gauge> = pright (pstr "gauge ") (pbetween (pchar '(') (pseq (pleft (pfloat) (pad (pchar ','))) (pfloat) (fun (a,b) -> (a,b))) (pchar ')') )
 
-let grammar = pleft pneedle peof
+let pyarn : Parser<Yarn> = pright (pstr "yarn ") (pseq (pad (pstring)) (pad (pinteger)) (fun (a,b) -> (a,b)))
+
+let grammar = pleft pyarn peof
 
 let parse (s: string) = 
     let input = prepare s

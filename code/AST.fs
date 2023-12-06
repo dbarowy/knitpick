@@ -26,3 +26,5 @@ type Paragraph = String * Instruction list
 type Needle = String * String * Int
 
 type Gauge = Float * Float
+
+type Yarn = String * Int
