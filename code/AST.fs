@@ -23,6 +23,6 @@ type Paragraph = String * Instruction list
 //type Paragraph = String
 // type Paragraph = Instruction list
 
-type Needle = String * (String * Float)
+type Needle = String * String * Int
 
 type Gauge = Float * Float

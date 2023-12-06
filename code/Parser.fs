@@ -38,11 +38,12 @@ let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pad
 // let ppara : Parser<Paragraph> = pright (pstr "pg ") (pstring) |>> (fun c -> string c)
 // let ppara : Parser<Paragraph> = pright (pstr "pg") (pmany1 (pleft (pad pinst) pws0))
 
-//let pneedle : Parser<Needle> = pright (pstr "needle ") pseq (pstring) pseq
+// needle sp us 8
+let pneedle : Parser<Needle> = pright (pstr "needle ") (pseq (pad (pstring)) (pseq (pad (pstring)) (pinteger) (fun (a,b) -> (a,b))) (fun (a, (b, c)) -> (a, b, c)))
 
 let pgauge : Parser<Gauge> = pright (pstr "gauge ") (pbetween (pchar '(') (pseq (pleft (pfloat) (pad (pchar ','))) (pfloat) (fun (a,b) -> (a,b))) (pchar ')') )
 
-let grammar = pleft pgauge peof
+let grammar = pleft pneedle peof
 
 let parse (s: string) = 
     let input = prepare s
