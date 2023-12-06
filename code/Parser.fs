@@ -40,7 +40,9 @@ let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pad
 
 //let pneedle : Parser<Needle> = pright (pstr "needle ") pseq (pstring) pseq
 
-let grammar = pleft pfloat peof
+let pgauge : Parser<Gauge> = pright (pstr "gauge ") (pbetween (pchar '(') (pseq (pleft (pfloat) (pad (pchar ','))) (pfloat) (fun (a,b) -> (a,b))) (pchar ')') )
+
+let grammar = pleft pgauge peof
 
 let parse (s: string) = 
     let input = prepare s

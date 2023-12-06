@@ -5,7 +5,7 @@ open System.IO
 [<EntryPoint>]
 let main args = 
     
-    let s = "45.63"
+    let s = "gauge (5.2,6.3)"
     let result = parse s
 
     match result with 
