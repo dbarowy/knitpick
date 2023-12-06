@@ -4,6 +4,19 @@ open System.IO
 
 [<EntryPoint>]
 let main args = 
+    
+    let s = "45.63"
+    let result = parse s
+
+    match result with 
+    | Some ast -> 
+        printfn "%A" (string ast)
+        exit 0
+    | None ->
+        printfn "parse failed"
+        exit 1
+    
+    (*
     if Array.length args = 2 then 
         
         let s = System.IO.File.ReadAllText args[0]
@@ -20,3 +33,4 @@ let main args =
         0
     else 
         0
+    *)

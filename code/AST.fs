@@ -1,6 +1,7 @@
 module AST 
 
 (* Primitives *)
+type Float = float
 type Int = int
 type String = string
 
@@ -21,3 +22,5 @@ type Instruction =
 type Paragraph = String * Instruction list
 //type Paragraph = String
 // type Paragraph = Instruction list
+
+type Needle = String * (String * Float)

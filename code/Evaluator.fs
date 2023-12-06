@@ -60,6 +60,10 @@ let evalPara (input: Paragraph) : string =
     match input with
     | (s, is) -> "\\section*{" + s + "}" + "\n\n" + evaluate is
 
+let evalFloat (input: Float) : string = 
+    match input with
+    | f -> string f
+
 (* let evalPara (input: Paragraph) : string = 
     match input with 
     | s -> s *)

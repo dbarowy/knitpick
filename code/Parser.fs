@@ -7,6 +7,8 @@ let pstitchseq, pstitchseqImpl = recparser()
 
 let pinteger : Parser<Int> = pmany1 pdigit |>> (fun ds -> stringify ds |> int)
 
+let pfloat : Parser<Float> = pseq (pseq (pmany1 pdigit) (pchar '.') (fun (a, b) -> a @ [b])) (pmany1 pdigit) (fun (a, b) -> a @ b)|>> (fun ds ->stringify ds |> float)
+
 let pnotquot: Parser<char> = psat (fun c -> c <> '"')
 let pstring : Parser<String> = pbetween (pchar '"') (pmany1 pnotquot) (pchar '"') |>> (fun cs -> stringify cs)
 
@@ -36,7 +38,9 @@ let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pad
 // let ppara : Parser<Paragraph> = pright (pstr "pg ") (pstring) |>> (fun c -> string c)
 // let ppara : Parser<Paragraph> = pright (pstr "pg") (pmany1 (pleft (pad pinst) pws0))
 
-let grammar = pleft ppara peof
+//let pneedle : Parser<Needle> = pright (pstr "needle ") pseq (pstring) pseq
+
+let grammar = pleft pfloat peof
 
 let parse (s: string) = 
     let input = prepare s
