@@ -1,5 +1,3 @@
-
-
 header "scarf"
     needle "sp" "us" 8
     gauge (10.0, 8.0)

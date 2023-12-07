@@ -64,6 +64,12 @@ let evalFloat (input: Float) : string =
     match input with
     | f -> string f
 
+//finish later
+// let evalNeedle (input: Needle) : string = 
+//     match input with
+//     | (type, unit, size) -> 
+//         "\\subsection*{" + Needles: + "}" + "\n\n" + 
+
 (* let evalPara (input: Paragraph) : string = 
     match input with 
     | s -> s *)
