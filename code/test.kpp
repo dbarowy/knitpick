@@ -1,5 +1,15 @@
-pg "Ribbing" 
-    "cast on"
-    (k1p1) 
-    +(p2k3) 
-    "then knit the rest"
+
+
+header "scarf"
+    needle "sp" "us" 8
+    gauge (10.0, 8.0)
+    yarn "alpaca" 3
+
+pg "Body"
+    k3p3
+    +(k2p2)
+    "continue in this manner for 45 rows"
+
+pg "End"
+    +k1
+    "cast off"

@@ -5,6 +5,11 @@ type Float = float
 type Int = int
 type String = string
 
+
+// type Number = 
+//     | NumFloat of Float 
+//     | NumInt of Int
+
 (* Combining Forms *)
 type Stitch = String * Int
 
@@ -20,11 +25,13 @@ type Instruction =
     | InstString of String
 
 type Paragraph = String * Instruction list
-//type Paragraph = String
-// type Paragraph = Instruction list
 
 type Needle = String * String * Int
 
 type Gauge = Float * Float
 
 type Yarn = String * Int
+
+type Header = String * Needle * Gauge * Yarn
+
+type Document = Header * Paragraph list

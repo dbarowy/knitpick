@@ -5,7 +5,7 @@ open System.IO
 [<EntryPoint>]
 let main args = 
     
-    let s = "yarn \"alpaca\" 4"
+    let s = System.IO.File.ReadAllText "test.kpp"
     let result = parse s
 
     match result with 
