@@ -15,8 +15,6 @@ let pfloat : Parser<Float> = pseq (pseq (pmany1 pdigit) (pchar '.') (fun (a, b) 
 let pnotquot: Parser<char> = psat (fun c -> c <> '"')
 let pstring : Parser<String> = pbetween (pchar '"') (pmany1 pnotquot) (pchar '"') |>> (fun cs -> stringify cs)
 
-let pinststring : Parser<Instruction> = pstring |>> (fun s -> InstString(s))
-
 let pad p = pbetween pws0 p pws0
 
 let ppurl : Parser<Stitch> = pchar 'p' |>> (fun _ -> ("purl", 0))
@@ -33,9 +31,12 @@ let ptwostitchseq : Parser<StitchSeq> = pbetween (pchar '(') (pseq (pstitchseq) 
 pstitchseqImpl := pstitchrep <|> pstitchseqtoend <|> ptwostitchseq
 
 let prow : Parser<Row> = pmany1 (pleft (pstitchseq) pws0) 
-let pinstrow : Parser<Instruction> = prow |>> (fun r -> InstRow(r))
 
-let pinst : Parser<Instruction> = pinstrow <|> pinststring
+let pinstrow : Parser<Instruction> = prow |>> (fun r -> InstRow(r))
+let pinststring : Parser<Instruction> = pstring |>> (fun s -> InstString(s))
+let prepeat : Parser<Instruction> = pright (pstr "repeat ") (pseq (pmany1 (pad (pleft (prow) (pchar ',')))) (pinteger) (fun (rs, i) -> Repeat(i, rs))) 
+ 
+let pinst : Parser<Instruction> = pleft (prepeat <|> pinstrow <|> pinststring) (pchar ';')
 
 let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pad pinst)) (fun (s, is) -> Paragraph(s, is)) )
 // let ppara : Parser<Paragraph> = pright (pstr "pg ") (pstring) |>> (fun c -> string c)
@@ -46,7 +47,11 @@ let ppara : Parser<Paragraph> = pright (pstr "pg ") (pseq (pstring) (pmany1 (pad
 // let pusneedle = pseq (pad (pstr "us")) (pinteger) (fun (a, b) -> (a, a))
 // let pneedle : Parser<Needle> = pright (pstr "needle ") (pseq (pad (pstring)) (pmetricneedle <|> pusneedle) (fun (a, (b, c)) -> (a, b, c)))
 
-let pneedle : Parser<Needle> = pright (pstr "needle ") (pseq (pad (pstring)) (pseq (pad (pstring)) (pinteger) (fun (a,b) -> (a,b))) (fun (a, (b, c)) -> (a, b, c)))
+let psingle = pstr "sp" |>> (fun _ -> String "single pointed")
+let pdouble = pstr "dp" |>> (fun _ -> String "double pointed")
+let pcircular = pstr "ci" |>> (fun _ -> String "circular")
+
+let pneedle : Parser<Needle> = pright (pstr "needle ") (pseq (pad (psingle <|> pdouble <|> pcircular)) (pseq (pad (pstring)) (pinteger) (fun (a,b) -> (a,b))) (fun (a, (b, c)) -> (a, b, c)))
 
 let pgauge : Parser<Gauge> = pright (pstr "gauge ") (pbetween (pchar '(') (pseq (pleft (pfloat) (pad (pchar ','))) (pfloat) (fun (a,b) -> (a,b))) (pchar ')') )
 
@@ -68,7 +73,7 @@ let pheader : Parser<Header> = pright (pstr "header ") (pseq
 
 let pdocument : Parser<Document> = pseq (pad pheader) (pmany1 (pad ppara)) (fun (a,b)->(a,b))
 
-let grammar = pleft pheader peof
+let grammar = pleft pdocument peof
 
 let parse (s: string) = 
     let input = prepare s

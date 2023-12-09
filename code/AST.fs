@@ -5,7 +5,6 @@ type Float = float
 type Int = int
 type String = string
 
-
 // type Number = 
 //     | NumFloat of Float 
 //     | NumInt of Int
@@ -23,10 +22,14 @@ type Row = StitchSeq list
 type Instruction = 
     | InstRow of Row
     | InstString of String
+    | Repeat of Int * Row list
 
 type Paragraph = String * Instruction list
 
 type Needle = String * String * Int
+    (* | Single of String * String * Int
+    | Double of String * String * Int
+    | Circle of String * String * Int *)
 
 type Gauge = Float * Float
 

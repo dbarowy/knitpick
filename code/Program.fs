@@ -21,8 +21,16 @@ let main args =
     // to construct entire document
     if Array.length args = 2 then 
         
-        let s = System.IO.File.ReadAllText args[0]
-        let result = parse s
+        let s = 
+            try
+                Some (System.IO.File.ReadAllText args[0])
+            with 
+                | :? System.IO.FileNotFoundException -> printfn "File %s not found." args[0]; None
+        
+        let result = 
+            match s with 
+            | Some s -> parse s
+            | None -> None
 
         let name = args[1]
 

@@ -22,30 +22,41 @@ let evalStitchSeq (input: StitchSeq) : string =
     let rec evaluate ss = 
         match ss with
         | StitchRep (stitch, reps) -> (evalStitch stitch) + " " + (reps |> string)
-        | StitchSeqToEnd (sseq) -> (evaluate sseq) + " " + "to end of row."
-        | TwoStitchSeq (sseq1, sseq2) -> (evaluate sseq1) + " " + (evaluate sseq2)
-    (evaluate input) + "\n"
+        | StitchSeqToEnd (sseq) -> (evaluate sseq) + " " + "to end of row"
+        | TwoStitchSeq (sseq1, sseq2) -> (evaluate sseq1) + ", " + (evaluate sseq2)
+    
+    (evaluate input) + "."
 
-let evalRow (input: Row) : string = 
-    let rec evaluate r n = 
-        match r with
-        | [] -> ""
-        | x::xs -> (n |> string) + ". " + (evalStitchSeq x) + "\n" + (evaluate xs (n + 1))
-    (evaluate input 1)
-
-let evalInst (input: Instruction) : string = 
+let rec evalRow (input: Row) : string = 
     match input with
-    | InstRow r -> evalRow r
-    | InstString s -> s + "\n\n"
+    | [] -> ""
+    | x::xs -> (evalStitchSeq x) + " " + (evalRow xs)
+
+let evalInst (input: Instruction) (stepNum: int) : string = 
+    let prefix = @"\textbf{Step " + (stepNum |> string) + ". }"
+
+    let rec evalRows rs = 
+        match rs with 
+        | [] -> ""
+        | r::rs -> "\\item " + evalRow(r) + "\n" + evalRows(rs)
+
+    let evalInstHelper i = 
+        match i with
+        | InstRow r -> prefix + (evalRow r)
+        | InstString s -> prefix + s
+        | Repeat (i, rs) -> 
+            prefix + "\n" + @"\begin{enumerate}[label=(\alph*)]" + "\n" + evalRows(rs) + @"\end{enumerate}" + "\nRepeat for a total of " + (i |> string) + " times."
+    
+    (evalInstHelper input) + "\n\n"
 
 let evalPara (input: Paragraph) : string = 
-    let rec evaluate is = 
+    let rec enumerateInsts is n = 
         match is with
         | [] -> ""
-        | i::is -> (evalInst i) + (evaluate is)
+        | i::is -> (evalInst i n) + (enumerateInsts is (n + 1))
 
     match input with
-    | (s, is) -> "\\section*{" + s + "}" + "\n\n" + evaluate is
+    | (s, is) -> "\\section*{" + s + "}" + "\n\n" + (enumerateInsts is 1) + "\n"
 
 let evalTitle (input: String) : string = 
     "\\documentclass[10pt]{article}\n\n\
@@ -54,7 +65,8 @@ let evalTitle (input: String) : string =
     \\usepackage{sect sty}\n\
     \\usepackage{enumerate}	\n\
     \\usepackage[space]{grffile}\n\
-    \\usepackage{makecell}
+    \\usepackage{makecell}\n\
+    \\usepackage{enumitem}\n\n\
     \\graphicspath{.} \n\
     \\pagestyle{fancy}\n\
     \\renewcommand{\\headrulewidth}{0.4pt}\n\
@@ -62,20 +74,21 @@ let evalTitle (input: String) : string =
     \\renewcommand{\\footrulewidth}{0.4pt}\n\
     \\setlength{\\parindent}{0cm}\n\
     \\title{" + input + "}\n\
-    \\date{}\n\n\
+    \\date{}\n\
+    \\pagenumbering{gobble}\n\n\
     \\begin{document}\n\n\
-    \\maketitle\n\n\
+    \\maketitle\n\n\n\
     "
 
 let evalNeedle (input: Needle) : string = 
     match input with
     | (t, unit, size) -> 
-        @"\makecell[t l]{" + "\n" + @"Needle Type - " + t + @"\\" + "\n" + @"Needle Unit - " + unit + @"\\" + "\n" + @"Needle Size - " + (size |> string) + @"\\}" + "\n" + "&" + "\n"
+        @"\makecell[t l]{" + "\n" + t + @"\\" + "\n" + @"size " + unit + " " + (size |> string) + @"\\}" + "\n" + "&" + "\n"
         
 let evalGauge (input: Gauge) : string = 
     match input with 
     | (a, b) -> 
-        @"\makecell[t l]{" + "\n" + @"Gauge - " + (a |> string) + " " + (b |> string) + @"\\}" + "\n" + "&" + "\n"
+        @"\makecell[t l]{" + "\n" + (a |> string) + @" stitches\\" + "\n" + (b |> string) + @" rows per square inch\\}" + "\n" + "&" + "\n"
 
 let evalYarn (input: Yarn) : string = 
     match input with 
@@ -90,7 +103,16 @@ let evalHeader (input: Header) : string =
         evalNeedle(needle) + 
         evalGauge(gauge) + 
         evalYarn(yarn) + 
-        @"\hline" + "\n" + @"\end{tabular}" + "\n" + @"\end{center}" + "\n"
+        @"\hline" + "\n" + @"\end{tabular}" + "\n" + @"\end{center}" + "\n\n\n"
+
+let evalDocument (input: Document) : string = 
+    let rec evalParaList paragraphs = 
+        match paragraphs with 
+        | [] -> ""
+        | p::ps -> evalPara(p) + evalParaList(ps)
+
+    match input with 
+    | (header, paragraphs) -> evalHeader(header) + evalParaList(paragraphs)
 
 (* let evalPara (input: Paragraph) : string = 
     match input with 
@@ -128,8 +150,8 @@ let executeProcess (processName: string) (processArgs: string) =
 let toPDF (filename: string) = 
     executeProcess "pdflatex" filename |> ignore
 
-let constructDoc (ast: Header) (name: string) = 
+let constructDoc (ast: Document) (name: string) = 
     File.WriteAllText(name + ".tex", "")
-    writeToFile (evalHeader ast) name
+    writeToFile (evalDocument ast) name
     writeToFile endDoc name
     toPDF (name + ".tex")
