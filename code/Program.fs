@@ -5,7 +5,8 @@ open System.IO
 [<EntryPoint>]
 let main args = 
     
-    let s = System.IO.File.ReadAllText "test.kpp"
+    // to print AST only
+    (* let s = System.IO.File.ReadAllText "headertest.kpp"
     let result = parse s
 
     match result with 
@@ -15,8 +16,9 @@ let main args =
     | None ->
         printfn "parse failed"
         exit 1
+    *)
     
-    (*
+    // to construct entire document
     if Array.length args = 2 then 
         
         let s = System.IO.File.ReadAllText args[0]
@@ -32,5 +34,4 @@ let main args =
             exit 1
         0
     else 
-        0
-    *)
+        0 

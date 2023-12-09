@@ -68,9 +68,7 @@ let pheader : Parser<Header> = pright (pstr "header ") (pseq
 
 let pdocument : Parser<Document> = pseq (pad pheader) (pmany1 (pad ppara)) (fun (a,b)->(a,b))
 
-let grammar = pleft pdocument peof
-
-
+let grammar = pleft pheader peof
 
 let parse (s: string) = 
     let input = prepare s
