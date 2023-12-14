@@ -176,10 +176,13 @@ The start expression is \verb|<| program \verb|>|.
 
 \subsection{Semantics}
 
-
 \begin{tabular}{c|m{3.5cm}|m{3.5cm}|c|m{4cm}}
     
     Syntax & Abstract Syntax & Type Syntax & Prec./assoc. & Meaning \\
+    \hline
+    \textit{v} & \texttt{Var of String} & \texttt{string} & n/a & \textit{v} represents a variable, which can store a stitch. Every use of the variable gets replaced with the stitch it represents. \\ 
+    \hline 
+    "let "\textit{var}" = "\textit{st} & \texttt{Assignment of Var * String} & \texttt{Assignment} & n/a & An Assignment associates a var with a string for later use. \\
     \hline
     \textit{n} & \texttt{Int of int} & \texttt{int} & n/a & \textit{n} is a primitive. We represent integers using the 32-bit F\# integer data type (int32). \\
     \hline
@@ -197,28 +200,32 @@ The start expression is \verb|<| program \verb|>|.
     \hline
     \textit{I} & \texttt{Instruction} & \texttt{Instruction} & n/a & \textit{I} is an instruction, either a row of knitting or other direction (for example, "cast on.") \\ 
     \hline
-    "pg "\textit{name} \textit{inst} & \texttt{Paragraph of String * Instruction list} & \texttt{string * Instruction list} & n/a & The string "pg " followed by a string and a list of instructions defines a paragraph. The string is the name of the paragraph and the list of instructions describes how that part of the garment should be knit. \\
-    \hline
-    "needle " \textit{ty sys size} & \texttt{Needle of String * String * Int} & \texttt{string * string * int} & n/a & The string "needle" followed by two strings and an integer represents the needles needed for the knitting pattern. \textit{ty} represents the type of needle, \textit{sys} represents the measurement system (either US or mm), and \textit{size} is the size in that system. \\ 
-    \hline
+
     
 \end{tabular}
 
 
-\begin{tabular}{c|m{3.5cm}|m{3.5cm}|c|m{4cm}}
+\begin{tabular}{m{3cm}|m{3.5cm}|m{3.5cm}|c|m{4cm}}
     Syntax & Abstract Syntax & Type Syntax & Prec./assoc. & Meaning \\
+    \hline
+    "pg "\textit{name} \textit{inst} & \texttt{Paragraph of String * Instruction list} & \texttt{string * Instruction list} & n/a & The string "pg " followed by a string and a list of instructions defines a paragraph. The string is the name of the paragraph and the list of instructions describes how that part of the garment should be knit. \\
+    \hline
+    "needle " \textit{ty sys size} & \texttt{Needle of String * String * Int} & \texttt{string * string * int} & n/a & The string "needle" followed by two strings and an integer represents the needles needed for the knitting pattern. \textit{ty} represents the type of needle, \textit{sys} represents the measurement system (either US or mm), and \textit{size} is the size in that system. \\ 
     \hline
     "gauge " (\textit{stitches, rows}) & \texttt{Gauge of Float * Float} & \texttt{float * float} & n/a & The string "gauge " followed by a tuple of floats in parentheses communicates the ratios of stitches to horizontal inches and rows to vertical inches that the pattern designer used. \\
     \hline
     "yarn " \textit{"type" size} & \texttt{Yarn of String * int} & \texttt{string * int} & n/a & "yarn " followed by a string and and integer represents the type / brand and the size of the yarn used in the pattern \\
     \hline
-
-    % "header " \textit{}
-
-
+    "header " \textit{name needle gauge yarn} & \texttt{Header of String * Needle * Gauge * Yarn} & \texttt{Header} & n/a & The header data type is required in each pattern and contains the information about the needles, gauge, and yarn. \\
+    \hline
+    \textit{header pgs} & \texttt{Document of Header * Paragraph list} & \texttt{Document} & n/a & A Document consists of a Header followed by a list of paragraphs. \\
+    \hline
+    \textit{assigns doc} & \texttt{Program of Assignment list * Document} & \texttt{Assignment} & n/a & A program wraps a set of assignments and the Document datatype in that order. \\ 
+    \hline
 
  
 \end{tabular}
+
 
 \subsection{Remaining Work}
 
