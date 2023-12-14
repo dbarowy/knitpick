@@ -62,8 +62,8 @@ Locke Meyer, Felix King
 \indent
 KnitPick\#++ turns the tedious process of creating a knitting pattern, a set of instructions that 
 describe the construction process of a specific garment, into a precise, painless, and intuitive programming experience. 
-Ordinarily, creating a knitting pattern requires both some math skills as well as the graphic design savvy to organise the 
-document clearly; with KnitPick\#++, these are no longer required. Furthermore, the various styles of knitting pattern that 
+Ordinarily, creating a knitting pattern requires the graphic design savvy to organise the 
+document cleanly and clearly; with KnitPick\#++, this are no longer required. Furthermore, the various styles of knitting pattern that 
 exist can be confusing to a knitter without a wide range of prior knitting experience; KnitPick\#++ establishes a powerful 
 and expressive standard for knitting patterns that can be easily learned and read by anyone.
 
@@ -78,101 +78,35 @@ solution, since programming languages offer easy repetition of pieces of informa
 
 One of our technical goals for KnitPick\#++ is for it to be relatively lightweight in terms of (e.g.) 
 the number of basic stitches that are defined by the language. However, we also want to design KnitPick\#++ 
-such that users can define new stitch types (and other variables) to fit their needs – for instance, by 
-defining a less common stitch that serves a more niche purpose in the knitting process. Another one of our 
+such that users can define new stitch types to fit their needs – for instance, by 
+defining a less common stitch that serves a more niche purpose in the knitting process, like the moss stitch. Another one of our 
 goals for KnitPick\#++ is to have it generate documents that look nice and are easy to comprehend. An aesthetic goal 
 is for KnitPick\#++ code to be concise and readable; for this reason, many keywords in our syntax are abbreviations.
 
 \subsection{Examples}
 
-Each of the following examples will be executed by running the command-line argument "dotnet run example-1.kpp example-1",
-and then "pdflatex example-1.tex". Sample outputs can be found in the "examples" folder in the docs directory.
+Each of the following examples can be executed from within the examples folder 
+by typing the following into the terminal: 
+"dotnet run --project ../../code/kpplibrary example-1.kpp example-1". Here, "example-1.kpp" is the name of the file containing KnitPick\#++ code 
+and "example-1" is the name of the pdf file that will be generated. 
+
+KnitPick\#++ will automatically create a pdf of your knitting pattern.
 
 \textbf{A.}
 \begin{verbatim}
-    pg Body = 
-        row stock1 = s1 k+
-        row stock2 = s1 p+
-        repeat 75 stock1 stock2
-
-    pg End = 
-        "cast off"
-
-    new pattern Scarf 50
-        needles = 
-            sp
-            us 8
-        yarn =
-            alpaca
-            4
-        gauge = (8.0, 6.0)
-
-    Body
-    End
+    TODO
 \end{verbatim}
 
 \newpage
 \textbf{B.}
 \begin{verbatim}
-    gr Checkerboard = 
-        color orange = (255, 165, 0)
-        color blue = (0, 0, 255)
-
-        gridChunk checkerboard = 
-            (orange 1 blue 1)+
-            (blue 1 orange 1)+
-
-        checkerboard 10
-
-    pg Body = 
-        row knit = k+
-        repeat 50 knit BicolorPattern
-
-    pg End =
-        "cast off"
-
-    new pattern BicolorTube 30
-        needles = 
-            ro
-            8.0 mm
-        yarn = 
-            acrylic
-            3
-            blue, orange
-        gauge = (10.0, 10.0)
-
-    Checkerboard
-    Body
-    End
+    TODO
 \end{verbatim}
 
 \newpage
 \textbf{C.}
 \begin{verbatim}
-    pg Ribbing =
-        row rib = s1 k1 (p2 k2)+
-        repeat 16 rib
-
-    pg Body = 
-        row stock = s1 k+
-        repeat 75 stock
-
-    pg End = 
-        “cast off”
-
-    new pattern LegWarmer 60
-        needles = 
-            ro
-            us 6
-        yarn =
-            merino
-            3
-        gauge = (10.0, 8.0)
-
-    Ribbing
-    Body
-    Ribbing
-    End
+    TODO
 \end{verbatim}
 
 \subsection{Language Concepts}
@@ -184,11 +118,11 @@ of \textbf{sequences} including \textbf{stitches}, numbers, or other more specia
 knitting pattern might look like this.
 
 \begin{verbatim}
-Cuff:  
-cast on 64
-
-Row 1: knit 2 purl 2 to end of row.
-Repeat Row 1 for 16 total rows.
+Cuff
+Step 1. cast on 64.
+Step 2. 
+    (a) knit 2, purl 2 to end of row.
+Repeat for a total of 16 times.
 \end{verbatim}
 
 The primitives of this language are integers, floats, and strings. These primitives will all combine in various ways to create 
@@ -197,56 +131,45 @@ the number of times to repeat an instruction, among other things. Strings repres
 instruction the user wants to include. Floats appear in the header of a document and provide precise information about the "gauge" of the 
 pattern and the size of the yarn to be used.
 
+\newpage
+
 \subsection{Formal Syntax}
-
-Each program begins with the statement “new pattern” followed by a string, and then an integer. This string defines the name 
-of the knitting pattern, and the integer defines the number of stitches to be casted on for this pattern. Underneath the 
-“new pattern” statement, the user must define three fields – needles, yarn, and gauge, in that order – by typing the name of 
-the field followed by ‘=’. The needles field defines the type of knitting needles to be used and their sizes, the yarn field 
-defines the type of yarn to be used and its size, and the gauge defines the number of stitches per inch of fabric. All of the 
-above constitutes the header of the program.
-
-\bigskip
-
-Once the header has been completed, the user will leave one line of whitespace and begin typing the body of the program. The 
-body consists of paragraphs and grids. Most of the time, it will be convenient to create a variable for a paragraph or grid above 
-the header.
-
-\bigskip
-
-A paragraph is defined by “pg” followed by a string, followed by a ‘=’. This string is the name of the paragraph. Underneath 
-the “pg” statement, the user will define a string, a row, a repeat statement, a taper statement, or some combination of these. 
-A row is defined by “row” followed by a string, followed by a ‘=’, followed by a sequence of stitches. A repeat is defined by 
-“repeat” followed by an integer, followed by one or more rows. Here, the integer defines the number of times to repeat the rows 
-in the statement. A taper is defined by “taper”, followed by a char, followed by an integer, followed by a ->, followed by 
-another integer, followed by one or more rows. Here, the integers around the arrow define the starting and ending ‘widths’ of 
-the taper pattern; this instruction is useful for creating rounded portions of garments (like the top of a beanie).
-
-\bigskip
-
-\textbf{Minimal Formal Grammar}
-
-For now, the start expression is paragraph.
+The start expression is \verb|<| program \verb|>|.
 \begin{verbatim}
-    <paragraph>   ::= "pg "<string>((<ws>)*<instruction>(<ws>)*)+
+    <program>     ::= (<assignment>)*<document>
+    <assignment>  ::= "let "<variable>" ="<pad><string><pad>
+    <variable>    ::= (<letter>)+
+    <document>    ::= <pad><header><pad>(<pad><paragraph><pad>)+
+    <header>      ::= "header "<pad><string><pad><needle><pad><gauge><pad><yarn>
+    <needle>      ::= "needle "<pad>"sp"<pad><string><pad><integer>
+                  |   "needle "<pad>"dp"<pad><string><pad><integer>
+                  |   "needle "<pad>"ci"<pad><string><pad><integer>
+    <gauge>       ::= "gauge "<oParen><float><pad><comma><pad><float><cParen> 
+    <yarn>        ::= "yarn "<pad><string><pad><integer>
+    <paragraph>   ::= "pg "<string>(<pad><instruction><pad>)+
     <instruction> ::= <string>
                   |   <row>
-    <row>         ::= (<stitchSeq>(<ws>)*)+
-    <stitchSeq>   ::= <stitch><number>
+    <row>         ::= (<stitchSeq><pad>)+
+    <stitchSeq>   ::= <stitch><integer>
                   |   <plus><stitchSeq>
                   |   <oParen><stitchSeq><stitchSeq><cParen>
     <stitch>      ::= 'k'
                   |   'p'
-    <number>      ::= <d><number>
-                  |   <d>
+                  |   <variable>
+    <pad>         ::= (<ws>)*
+    <string>      ::= <quote>(<character>)+<quote>
+    <integer>     ::= (<d>)+
+    <float>       ::= (<d>)+<dot>(<d>)+
     <d>           ::= '0' | '1' | ... | '8' | '9'
+    <period>      ::= '.'
     <plus>        ::= '+'
     <oParen>      ::= '('
     <cParen>      ::= ')'
-    <string>      ::= <quote>(<character)+<quote>
+    <comma>       ::= ','
     <ws>          ::= ' ' | '\n' | '\t' | "\rn"
     <quote>       ::= '"'
-    <character>   ::= ' ' | '!' | ... | '}' | '~'
+    <letter>      ::= 'A' | ... | 'Z' | ... | 'a' | ... | 'z' |
+    <character>   ::= ' ' | '!' | ... | 'a' | ... | 'z' | ... | '}' | '~'
 \end{verbatim}
 
 \newpage

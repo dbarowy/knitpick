@@ -58,7 +58,7 @@ let pneedle : Parser<Needle> = pright (pstr "needle ") (pseq (pad (psingle <|> p
 
 let pgauge : Parser<Gauge> = pright (pstr "gauge ") (pbetween (pchar '(') (pseq (pleft (pfloat) (pad (pchar ','))) (pfloat) (fun (a,b) -> (a,b))) (pchar ')') )
 
-let pyarn : Parser<Yarn> = pright (pstr "yarn ") (pseq (pad (pstring)) (pad (pinteger)) (fun (a,b) -> (a,b)))
+let pyarn : Parser<Yarn> = pright (pstr "yarn ") (pseq (pad (pstring)) (pinteger) (fun (a,b) -> (a,b)))
 
 let pheader : Parser<Header> = pright (pstr "header ") (pseq
     (pad (pstring))

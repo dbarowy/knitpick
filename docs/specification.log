@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  13 DEC 2023 21:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  13 DEC 2023 22:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -950,175 +950,173 @@ LaTeX Info: Redefining \nameref on input line 54.
 
 ABD: EveryShipout initializing macros
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 9
-2.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] [4]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 257
-.
+] [2] [3]
+Overfull \hbox (10.24498pt too wide) in paragraph at lines 173--173
+[]    \OT1/pcr/m/n/10 <header>      ::= "header "<pad><string><pad><needle><pad
+><gauge><pad><yarn>[] 
+ []
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+[4]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 180
+.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 257
+LaTeX Font Info:    Trying to load font information for U+msb on input line 180
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 265--265
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 []|\OT1/pcr/m/n/10 Stitch of String
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 190--190
 []|\OT1/pcr/m/n/10 StitchRep of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 190--190
 []|\OT1/pcr/m/n/10 (string * int) *
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 267--268
+Underfull \hbox (badness 2096) in paragraph at lines 190--191
 \OT1/ptm/m/n/10 com-mu-ni-cates a par-tic-u-lar
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 []|\OT1/pcr/m/n/10 StitchSeqToEnd
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 194--194
 []|\OT1/pcr/m/n/10 TwoStitchSeq
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 194--194
 \OT1/pcr/m/n/10 of StitchSeq *
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 194--194
 []|\OT1/pcr/m/n/10 StitchSeq *
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 271--272
+Underfull \hbox (badness 1199) in paragraph at lines 194--195
 []|\OT1/ptm/m/n/10 (\OT1/ptm/m/it/10 SS\OT1/ptm/m/n/10 ) is a com-bin-ing form
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--273
+Underfull \hbox (badness 10000) in paragraph at lines 196--196
 []|\OT1/pcr/m/n/10 Row of StitchSeq
  []
 
 
-Underfull \hbox (badness 1953) in paragraph at lines 273--274
+Underfull \hbox (badness 1953) in paragraph at lines 196--197
 []|\OT1/ptm/m/n/10 A row com-bines mul-ti-ple
  []
 
 
-Underfull \hbox (badness 3199) in paragraph at lines 273--274
+Underfull \hbox (badness 3199) in paragraph at lines 196--197
 \OT1/ptm/m/n/10 stitch se-quences that, to-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 200--200
 []|\OT1/pcr/m/n/10 Paragraph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 200--200
 \OT1/pcr/m/n/10 of String *
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 200--200
 []|\OT1/pcr/m/n/10 string *
  []
 
 
-Underfull \hbox (badness 1715) in paragraph at lines 277--278
+Underfull \hbox (badness 1715) in paragraph at lines 200--201
 \OT1/ptm/m/n/10 tions de-fines a para-graph.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--279
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\OT1/pcr/m/n/10 Needle of String
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--279
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\OT1/pcr/m/n/10 string * string
  []
 
 
-Underfull \hbox (badness 7012) in paragraph at lines 279--280
+Underfull \hbox (badness 7012) in paragraph at lines 202--203
 []|\OT1/ptm/m/n/10 The string "nee-dle" fol-
  []
 
 
-Overfull \hbox (31.4534pt too wide) in paragraph at lines 257--283
+Overfull \hbox (31.4534pt too wide) in paragraph at lines 180--206
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--288
+Underfull \hbox (badness 10000) in paragraph at lines 211--211
 []|\OT1/pcr/m/n/10 Gauge of Float *
  []
 
 
-Underfull \hbox (badness 2846) in paragraph at lines 288--289
+Underfull \hbox (badness 2846) in paragraph at lines 211--212
 []|\OT1/ptm/m/n/10 The string "gauge " fol-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 \OT1/ptm/m/n/10 paren-the-ses com-mu-ni-cates
  []
 
 
-Underfull \hbox (badness 5817) in paragraph at lines 288--289
+Underfull \hbox (badness 5817) in paragraph at lines 211--212
 \OT1/ptm/m/n/10 the ra-tios of stitches to
  []
 
 
-Underfull \hbox (badness 1117) in paragraph at lines 288--289
+Underfull \hbox (badness 1117) in paragraph at lines 211--212
 \OT1/ptm/m/n/10 to ver-ti-cal inches that the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--290
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 []|\OT1/pcr/m/n/10 Yarn of String *
  []
 
 
-Overfull \hbox (50.25354pt too wide) in paragraph at lines 285--299
+Overfull \hbox (50.25354pt too wide) in paragraph at lines 208--222
 [][] 
  []
 
 [5] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 309.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 309.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
  (./specification.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 309.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 309.
-
-
-Package rerunfilecheck Warning: File `specification.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `specification.out':
-(rerunfilecheck)             Before: D162637F49401F70882E4CBE0A4C2B19;369
-(rerunfilecheck)             After:  DF3D1B5CEEE21D4C819732ABBCA5E9EF;370.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 309.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
+Package rerunfilecheck Info: File `specification.out' has not changed.
+(rerunfilecheck)             Checksum: DF3D1B5CEEE21D4C819732ABBCA5E9EF;370.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
  ) 
 Here is how much of TeX's memory you used:
  27821 strings out of 483107
@@ -1133,7 +1131,7 @@ e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on specification.pdf (6 pages, 70124 bytes).
+Output written on specification.pdf (6 pages, 67541 bytes).
 PDF statistics:
  86 PDF objects out of 1000 (max. 8388607)
  73 compressed objects within 1 object stream
