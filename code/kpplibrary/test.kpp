@@ -1,19 +1,17 @@
-let smd = "see my dog"
+let s = "slip"
 
-header "Scarf"
-    needle dp "us" 8
-    gauge (10.2, 8.5)
-    yarn "turtle" 3
+header "Chunky Scarf"
+    needle sp "us" 8
+    gauge (4.0, 4.0)
+    yarn "Mohair-merino" 5
+
+pg "Beginning Ribbing"
+    "Cast on 64";
+    repeat +(k1p1), 12;
 
 pg "Body"
-    ((k1p1)k2); 
-    +k3;
-    +smd1;
-    p1 +k2;
-    "dance around...";
-    repeat p1, (k2k3), +p2, 10;
-    "keep dancing...";
-    
-pg "End"
-    +k1;
-    "cast off";
+    repeat s1 +k1, s1 +p1, 240;
+
+pg "End Ribbing"
+    repeat +(k1p1), 12;
+    "Cast off and sew in ends.";
