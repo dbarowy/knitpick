@@ -253,32 +253,48 @@ For now, the start expression is paragraph.
 
 \subsection{Semantics}
 
-\begin{center}
-    \begin{tabular}{c|m{3.5cm}|c|c|m{4cm}}
-        
-        Syntax & Abstract Syntax & Type Syntax & Prec./assoc. & Meaning \\
-        \hline
-        \textit{n} & \texttt{Int of int} & \texttt{int} & n/a & \textit{n} is a primitive. We represent integers using the 32-bit F\# integer data type (int32). \\
-        \hline
-        "\textit{str}" & \texttt{String of string} & \texttt{string} & n/a & \textit{str} is a primitive. We represent strings using the built-in F\# string type. \\
-        \hline
-        'k' or 'p' & \texttt{Stitch of String * Int} & \texttt{string * int} & n/a & 'k' or 'p' represents either a knit or a purl stitch. We construct a Stitch object by keeping a (small) dictionary of stitches and their abbreviations. \\
-        \hline
-        \textit{sn} & \texttt{StitchRep of Stitch * Int} & \texttt{(string * int) * int} & n/a & \textit{sn} is a combining form that communicates a particular kind of stitch (knit or purl) and the number of times it should be performed. \\
-        \hline
-        +\textit{S} & \texttt{StitchSeqToEnd of StitchSeq} & \texttt{StitchSeq} & n/a & +\textit{S} is a kind of StitchSeq that indicates that the StitchSeq \textit{S} should be repeated until the end of the row. \\
-        \hline
-        (\textit{SS}) & \texttt{TwoStitchSeq of StitchSeq * StitchSeq} & \texttt{StitchSeq * StitchSeq} & n/a & (\textit{SS}) is a combining form that allows StitchSeqs to be chained for more complexity. \\
-        \hline 
-        \textit{R} & \texttt{Row of StitchSeq list} & \texttt{StitchSeq list} & n/a & A row combines multiple stitch sequences that, together, make up one row of knitting. \\
-        \hline
-        \textit{I} & \texttt{Instruction} & \texttt{Instruction} & n/a & \textit{I} is an instruction, either a row of knitting or other direction (for example, "cast on.") \\ 
-        \hline
-        "pg ""\textit{name}" \textit{inst} & \texttt{Paragraph of String * Instruction list} & \texttt{string * Instruction list} & n/a & The string "pg " followed by a string and a list of instructions defines a paragraph. The string is the name of the paragraph and the list of instructions describes how that part of the garment should be knit. \\
-        \hline
 
-    \end{tabular}
-\end{center}
+\begin{tabular}{c|m{3.5cm}|m{3.5cm}|c|m{4cm}}
+    
+    Syntax & Abstract Syntax & Type Syntax & Prec./assoc. & Meaning \\
+    \hline
+    \textit{n} & \texttt{Int of int} & \texttt{int} & n/a & \textit{n} is a primitive. We represent integers using the 32-bit F\# integer data type (int32). \\
+    \hline
+    "\textit{str}" & \texttt{String of string} & \texttt{string} & n/a & \textit{str} is a primitive. We represent strings using the built-in F\# string type. \\
+    \hline
+    'k' or 'p' & \texttt{Stitch of String * Int} & \texttt{string * int} & n/a & 'k' or 'p' represents either a knit or a purl stitch. We construct a Stitch object by keeping a (small) dictionary of stitches and their abbreviations. \\
+    \hline
+    \textit{sn} & \texttt{StitchRep of Stitch * Int} & \texttt{(string * int) * int} & n/a & \textit{sn} is a combining form that communicates a particular kind of stitch (knit or purl) and the number of times it should be performed. \\
+    \hline
+    +\textit{S} & \texttt{StitchSeqToEnd of StitchSeq} & \texttt{StitchSeq} & n/a & +\textit{S} is a kind of StitchSeq that indicates that the StitchSeq \textit{S} should be repeated until the end of the row. \\
+    \hline
+    (\textit{SS}) & \texttt{TwoStitchSeq of StitchSeq * StitchSeq} & \texttt{StitchSeq * StitchSeq} & n/a & (\textit{SS}) is a combining form that allows StitchSeqs to be chained for more complexity. \\
+    \hline 
+    \textit{R} & \texttt{Row of StitchSeq list} & \texttt{StitchSeq list} & n/a & A row combines multiple stitch sequences that, together, make up one row of knitting. \\
+    \hline
+    \textit{I} & \texttt{Instruction} & \texttt{Instruction} & n/a & \textit{I} is an instruction, either a row of knitting or other direction (for example, "cast on.") \\ 
+    \hline
+    "pg "\textit{name} \textit{inst} & \texttt{Paragraph of String * Instruction list} & \texttt{string * Instruction list} & n/a & The string "pg " followed by a string and a list of instructions defines a paragraph. The string is the name of the paragraph and the list of instructions describes how that part of the garment should be knit. \\
+    \hline
+    "needle " \textit{ty sys size} & \texttt{Needle of String * String * Int} & \texttt{string * string * int} & n/a & The string "needle" followed by two strings and an integer represents the needles needed for the knitting pattern. \textit{ty} represents the type of needle, \textit{sys} represents the measurement system (either US or mm), and \textit{size} is the size in that system. \\ 
+    \hline
+    
+\end{tabular}
+
+
+\begin{tabular}{c|m{3.5cm}|m{3.5cm}|c|m{4cm}}
+    Syntax & Abstract Syntax & Type Syntax & Prec./assoc. & Meaning \\
+    \hline
+    "gauge " (\textit{stitches, rows}) & \texttt{Gauge of Float * Float} & \texttt{float * float} & n/a & The string "gauge " followed by a tuple of floats in parentheses communicates the ratios of stitches to horizontal inches and rows to vertical inches that the pattern designer used. \\
+    \hline
+    "yarn " \textit{"type" size} & \texttt{Yarn of String * int} & \texttt{string * int} & n/a & "yarn " followed by a string and and integer represents the type / brand and the size of the yarn used in the pattern \\
+    \hline
+    % "header " \textit{}
+
+
+
+ 
+\end{tabular}
 
 \subsection{Remaining Work}
 
