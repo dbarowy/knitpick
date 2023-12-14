@@ -17,10 +17,13 @@ let pstring : Parser<String> = pbetween (pchar '"') (pmany1 pnotquot) (pchar '"'
 
 let pad p = pbetween pws0 p pws0
 
-let ppurl : Parser<Stitch> = pchar 'p' |>> (fun _ -> ("purl", 0))
-let pknit : Parser<Stitch> = pchar 'k' |>> (fun _ -> ("knit", 0))
+// a variable name is a string made up of letters
+let pvar : Parser<Var> = (pmany1 pletter) |>> (fun cs -> stringify cs) |>> Var
 
-let pstitch : Parser<Stitch> = pknit <|> ppurl
+let ppurl : Parser<Stitch> = pchar 'p' |>> (fun _ -> StitchBuiltIn "purl")
+let pknit : Parser<Stitch> = pchar 'k' |>> (fun _ -> StitchBuiltIn "knit")
+
+let pstitch : Parser<Stitch> = pknit <|> ppurl <|> (pvar |>> (fun v -> StitchVar(v)))
 
 let pstitchrep : Parser<StitchSeq> = pseq pstitch pinteger (fun (a, b) -> (a, b)) |>> (fun (a, b) -> StitchRep (a, b))
 
@@ -73,7 +76,17 @@ let pheader : Parser<Header> = pright (pstr "header ") (pseq
 
 let pdocument : Parser<Document> = pseq (pad pheader) (pmany1 (pad ppara)) (fun (a,b)->(a,b))
 
-let grammar = pleft pdocument peof
+let passign : Parser<Assignment> = pseq (pright (pstr "let ") (pleft (pvar) (pstr " ="))) (pad pstring) Assignment
+
+(* let pexpr: Parser<Expr> =
+    (pdocument |>> (fun a -> DocumentExpr(a)))
+    <|> (pvar |>> (fun a -> VarExpr(a)))
+    <|> (passign |>> (fun a -> AssignmentExpr(a)))
+*)
+
+let pprogram : Parser<Program> = pseq (pmany0 passign) pdocument Program
+
+let grammar = pleft pprogram peof
 
 let parse (s: string) = 
     let input = prepare s

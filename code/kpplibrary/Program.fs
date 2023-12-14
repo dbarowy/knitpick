@@ -39,6 +39,7 @@ let main args =
             constructDoc ast name
             exit 0
         | None -> 
+            printfn "parse failed"
             exit 1
         0
     else 

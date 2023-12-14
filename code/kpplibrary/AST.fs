@@ -10,7 +10,13 @@ type String = string
 //     | NumInt of Int
 
 (* Combining Forms *)
-type Stitch = String * Int
+type Var = String
+
+type Assignment = Var * String
+
+type Stitch = 
+    | StitchBuiltIn of String
+    | StitchVar of Var
 
 type StitchSeq =
     | StitchRep of Stitch * Int
@@ -27,9 +33,6 @@ type Instruction =
 type Paragraph = String * Instruction list
 
 type Needle = String * String * Int
-    (* | Single of String * String * Int
-    | Double of String * String * Int
-    | Circle of String * String * Int *)
 
 type Gauge = Float * Float
 
@@ -38,3 +41,11 @@ type Yarn = String * Int
 type Header = String * Needle * Gauge * Yarn
 
 type Document = Header * Paragraph list
+
+type Program = Assignment list * Document
+
+(* type Expr = 
+    | DocumentExpr of Document
+    | VarExpr of Var
+    | AssignmentExpr of Assignment
+*)

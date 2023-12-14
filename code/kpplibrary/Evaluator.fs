@@ -3,12 +3,35 @@ module Evaluator
 open AST
 open System
 open System.IO
-//open System.Diagnostics
+
+// dictionary to store variables and their contents
+let varDict = new System.Collections.Generic.Dictionary<string,string>()
 
 let endDoc = "\\end{document}\n"
 
+// function for writing to a LaTeX file
 let writeToFile str name = 
     File.AppendAllText(name + ".tex", str)
+
+let evalAssignment (input: Assignment) : string = 
+    let name : string = 
+        match input with 
+        | (n, v) -> n
+    let value : string = 
+        match input with 
+        | (n, v) -> v
+    // mutably store result in the dictionary varDict for key name
+    varDict[name] <- value
+
+    ""
+
+let evalVar (input: Var) : string = 
+    match input with 
+    | name -> 
+        if (varDict.ContainsKey name) then 
+            varDict[name]
+        else 
+            failwith ("Unknown variable '" + name + "'")
 
 let evalFloat (input: Float) : string = 
     match input with
@@ -16,7 +39,8 @@ let evalFloat (input: Float) : string =
 
 let evalStitch (input: Stitch) : string =
     match input with
-    | (name, weight) -> name |> string
+    | StitchBuiltIn (name) -> name |> string
+    | StitchVar (name) -> evalVar name
 
 let evalStitchSeq (input: StitchSeq) : string = 
     let rec evaluate ss = 
@@ -32,21 +56,31 @@ let rec evalRow (input: Row) : string =
     | [] -> ""
     | x::xs -> (evalStitchSeq x) + " " + (evalRow xs)
 
+let rec evalRows rs = 
+    match rs with 
+    | [] -> ""
+    | r::rs -> "\\item " + evalRow(r) + "\n" + evalRows(rs)
+
+let evalInstTextOnly i = 
+    match i with
+    | InstRow r -> (evalRow r)
+    | InstString s -> s
+    | Repeat (i, rs) -> 
+        "\n" + @"\begin{enumerate}[label=(\alph*)]" + "\n" + evalRows(rs) + @"\end{enumerate}" + "\nRepeat for a total of " + (i |> string) + " times."
+    
 let evalInst (input: Instruction) (stepNum: int) : string = 
     let prefix = @"\textbf{Step " + (stepNum |> string) + ". }"
 
-    let rec evalRows rs = 
-        match rs with 
-        | [] -> ""
-        | r::rs -> "\\item " + evalRow(r) + "\n" + evalRows(rs)
-
-    let evalInstHelper i = 
+    (* let evalInstHelper i = 
         match i with
         | InstRow r -> prefix + (evalRow r)
         | InstString s -> prefix + s
         | Repeat (i, rs) -> 
-            prefix + "\n" + @"\begin{enumerate}[label=(\alph*)]" + "\n" + evalRows(rs) + @"\end{enumerate}" + "\nRepeat for a total of " + (i |> string) + " times."
+            prefix + "\n" + @"\begin{enumerate}[label=(\alph*)]" + "\n" + evalRows(rs) + @"\end{enumerate}" + "\nRepeat for a total of " + (i |> string) + " times." 
+    *)
     
+    let evalInstHelper i = (prefix + evalInstTextOnly i)
+
     (evalInstHelper input) + "\n\n"
 
 let evalPara (input: Paragraph) : string = 
@@ -83,17 +117,17 @@ let evalTitle (input: String) : string =
 let evalNeedle (input: Needle) : string = 
     match input with
     | (t, unit, size) -> 
-        @"\makecell[t l]{" + "\n" + t + @"\\" + "\n" + @"size " + unit + " " + (size |> string) + @"\\}" + "\n" + "&" + "\n"
+        @"\makecell[t]{" + "\n" + @"size " + unit + " " + (size |> string) +  @"\\" + "\n" + t + @"\\}" + "\n" + "&" + "\n"
         
 let evalGauge (input: Gauge) : string = 
     match input with 
     | (a, b) -> 
-        @"\makecell[t l]{" + "\n" + (a |> string) + @" stitches\\" + "\n" + (b |> string) + @" rows per square inch\\}" + "\n" + "&" + "\n"
+        @"\makecell[t]{" + "\n" + (a |> string) + @" stitches\\" + "\n" + (b |> string) + @" rows per square inch\\}" + "\n" + "&" + "\n"
 
 let evalYarn (input: Yarn) : string = 
     match input with 
     | (material, size) ->
-        @"\makecell[t l]{" + "\n" + @"Yarn Material - " + material + @"\\" + "\n" + @"Yarn Size - " + (size |> string) + @"\\}\\" + "\n"
+        @"\makecell[t]{" + "\n" + "size " + (size |> string) + @"\\" + "\n" + material + @" yarn\\" + @"}\\" + "\n"
 
 let evalHeader (input: Header) : string = 
     match input with 
@@ -114,14 +148,14 @@ let evalDocument (input: Document) : string =
     match input with 
     | (header, paragraphs) -> evalHeader(header) + evalParaList(paragraphs)
 
-(* let evalPara (input: Paragraph) : string = 
-    match input with 
-    | s -> s *)
+let evalProgram (input: Program) : string = 
+    let rec evalAssignments assignments = 
+        match assignments with 
+        | [] -> ""
+        | x::xs -> (evalAssignment x) + (evalAssignments xs)
 
-(* let rec evalPara (input: Paragraph) : string = 
-    match input with
-    | i::is -> (evalInst i) + (evalPara is)
-    | _ -> "" *)
+    match input with 
+    | (alist, doc) -> evalAssignments(alist) + (evalDocument doc)
 
 // ProcessResult and executeProcess from
 // https://isthisit.nz/posts/2021/execute-a-shell-process-in-fsharp/
@@ -150,8 +184,8 @@ let executeProcess (processName: string) (processArgs: string) =
 let toPDF (filename: string) = 
     executeProcess "pdflatex" filename |> ignore
 
-let constructDoc (ast: Document) (name: string) = 
+let constructDoc (ast: Program) (name: string) = 
     File.WriteAllText(name + ".tex", "")
-    writeToFile (evalDocument ast) name
+    writeToFile (evalProgram ast) name
     writeToFile endDoc name
     toPDF (name + ".tex")
