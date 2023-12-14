@@ -229,11 +229,14 @@ The start expression is \verb|<| program \verb|>|.
 
 \subsection{Remaining Work}
 
-We are still planning on implementing a couple of other possibilities for the Instruction type -- Taper and Repeat. These cases
-will allow for easy inclusion of common knitting instructions describing how to create a taper (e.g. the top of a hat) or several 
-repeated rows. After this, we will create the Document type, which is made up of a Header and multiple Paragraphs; we will also need 
-to implement the Header type, which contains information about the types and sizes of yarn to be used for the garment. If we have time 
-remaining after doing this work, we will implement variables so that it's easy to repeat Paragraphs in a Document.
+In our previous draft, we mentioned wanting to implement a Taper type -- this actually turned out to be redundant due to the Repeat type. 
+We also mentioned that we wanted to implement variables. And we did! HOWEVER, due to the design of our whole abstract syntax tree, we realized that we wouldn't be able to implement a variable that could represent
+any arbitrary data type. This was a valuable learning experience! We did end up implementing variables anyway; it's just that they
+can only represent stitches. 
+
+In the future, it would be nice to add a way for the user to create a colored grid pattern as a visual aid to the knitting instructions. 
+This was something we had originally thought about doing. However, we realized early on in the process of designing KnitPick\#++ 
+that we just wouldn't end up having time to implement it, but it could be cool to come to and work on at some point.
 
 % DO NOT DELETE ANYTHING BELOW THIS LINE
 \end{document}

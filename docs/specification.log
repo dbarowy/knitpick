@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  13 DEC 2023 22:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  13 DEC 2023 22:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1179,14 +1179,14 @@ Overfull \hbox (37.39287pt too wide) in paragraph at lines 208--228
  []
 
 [5] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 239.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 242.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 242.
  (./specification.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 242.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 242.
 Package rerunfilecheck Info: File `specification.out' has not changed.
 (rerunfilecheck)             Checksum: DF3D1B5CEEE21D4C819732ABBCA5E9EF;370.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 242.
  ) 
 Here is how much of TeX's memory you used:
  27821 strings out of 483107
@@ -1201,7 +1201,7 @@ e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on specification.pdf (6 pages, 69840 bytes).
+Output written on specification.pdf (6 pages, 70305 bytes).
 PDF statistics:
  86 PDF objects out of 1000 (max. 8388607)
  73 compressed objects within 1 object stream
