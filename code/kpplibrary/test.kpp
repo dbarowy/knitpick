@@ -1,0 +1,16 @@
+header "Scarf"
+    needle dp "us" 8
+    gauge (10.2, 8.5)
+    yarn "turtle" 3
+
+pg "Body"
+    ((k1p1)k2); 
+    +k3;
+    p1 +k2;
+    "dance around...";
+    repeat p1, (k2k3), +p2, 10;
+    "keep dancing...";
+    
+pg "End"
+    +k1;
+    "cast off";
