@@ -1,0 +1,18 @@
+let s = "slip"
+
+header "Chunky Scarf"
+    needle sp "us" 8
+    gauge (4.0,4.0) 
+    yarn "Mohair-merino" 5
+
+
+pg "Beginning Ribbing"
+    "Cast on 64";
+    repeat +(k1p1), 12;
+
+pg "Body"
+    repeat s1, +k1, s1, +p1, 240;
+
+pg "End Ribbing"
+    repeat +(k1p1), 12;
+    "Cast off and sew in ends";
