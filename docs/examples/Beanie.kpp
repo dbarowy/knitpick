@@ -1,0 +1,24 @@
+let tog = "knit two together"
+
+header "Beanie"
+    needle ci "us" 5
+    gauge (8.0, 8.0)
+    yarn "merino" 3
+
+pg "Ribbing"   
+    "Cast on 88 stitches.";
+    "Join stitches in the round.";
+    repeat +(k2p2), 24;
+
+pg "Body"
+    repeat +(k4p4), 4;
+    repeat +(p4k4), 4;
+    "continue in this manner until garment measures 8.5 inches";
+
+pg "Taper"
+    repeat +k1, +(k7tog1), 10;
+
+pg "End"
+    "Cut yarn to about 1 foot long";
+    "Using an embroidery needle, thread together last stitches and tie a knot";
+    "Sew in the ends";
