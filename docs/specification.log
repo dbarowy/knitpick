@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  13 DEC 2023 22:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  13 DEC 2023 22:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -908,8 +908,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 54.
 LaTeX Info: Redefining \pageref on input line 54.
 LaTeX Info: Redefining \nameref on input line 54.
-
-(./specification.out) (./specification.out)
 \@outlinefile=\write5
 \openout5 = `specification.out'.
 
@@ -1184,15 +1182,22 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 242.
  (./specification.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 242.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 242.
-Package rerunfilecheck Info: File `specification.out' has not changed.
-(rerunfilecheck)             Checksum: DF3D1B5CEEE21D4C819732ABBCA5E9EF;370.
+
+
+Package rerunfilecheck Warning: File `specification.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `specification.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  DF3D1B5CEEE21D4C819732ABBCA5E9EF;370.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 242.
  ) 
 Here is how much of TeX's memory you used:
- 27821 strings out of 483107
- 626183 string characters out of 5964630
- 908878 words of memory out of 5000000
- 42362 multiletter control sequences out of 15000+600000
+ 27809 strings out of 483107
+ 625997 string characters out of 5964630
+ 908801 words of memory out of 5000000
+ 42354 multiletter control sequences out of 15000+600000
  543713 words of font info for 46 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  67i,11n,71p,1607b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1201,10 +1206,10 @@ e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on specification.pdf (6 pages, 70305 bytes).
+Output written on specification.pdf (6 pages, 69940 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 64 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  15 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
