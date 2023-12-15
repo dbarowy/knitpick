@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  14 DEC 2023 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.7.24)  15 DEC 2023 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**specification
+**specification.tex
 (./specification.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14>
@@ -950,250 +950,249 @@ LaTeX Info: Redefining \nameref on input line 54.
 
 ABD: EveryShipout initializing macros
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-00.
+02.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3]
-Overfull \hbox (10.24498pt too wide) in paragraph at lines 173--173
+]
+Overfull \hbox (4.24498pt too wide) in paragraph at lines 167--167
+[]    \OT1/pcr/m/n/10 "Using an embroidery needle, thread together last stitche
+s and tie a knot";[] 
+ []
+
+[2] [3]
+Overfull \hbox (10.24498pt too wide) in paragraph at lines 231--231
 []    \OT1/pcr/m/n/10 <header>      ::= "header "<pad><string><pad><needle><pad
 ><gauge><pad><yarn>[] 
  []
 
 [4]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 179
+LaTeX Font Info:    Trying to load font information for U+msa on input line 237
 .
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 179
+LaTeX Font Info:    Trying to load font information for U+msb on input line 237
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 []|\OT1/ptm/m/it/10 v \OT1/ptm/m/n/10 rep-re-sents a vari-able,
  []
 
 
-Underfull \hbox (badness 2452) in paragraph at lines 183--184
+Underfull \hbox (badness 2452) in paragraph at lines 241--242
 \OT1/ptm/m/n/10 which can store a stitch.
  []
 
 
-Underfull \hbox (badness 1331) in paragraph at lines 183--184
+Underfull \hbox (badness 1331) in paragraph at lines 241--242
 \OT1/ptm/m/n/10 Ev-ery use of the vari-able
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
+Underfull \hbox (badness 10000) in paragraph at lines 243--243
 []|\OT1/pcr/m/n/10 Assignment of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--191
+Underfull \hbox (badness 10000) in paragraph at lines 249--249
 []|\OT1/pcr/m/n/10 Stitch of String
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--193
+Underfull \hbox (badness 10000) in paragraph at lines 251--251
 []|\OT1/pcr/m/n/10 StitchRep of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--193
+Underfull \hbox (badness 10000) in paragraph at lines 251--251
 []|\OT1/pcr/m/n/10 (string * int) *
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 193--194
+Underfull \hbox (badness 2096) in paragraph at lines 251--252
 \OT1/ptm/m/n/10 com-mu-ni-cates a par-tic-u-lar
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--195
+Underfull \hbox (badness 10000) in paragraph at lines 253--253
 []|\OT1/pcr/m/n/10 StitchSeqToEnd
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
 []|\OT1/pcr/m/n/10 TwoStitchSeq
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
 \OT1/pcr/m/n/10 of StitchSeq *
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
 []|\OT1/pcr/m/n/10 StitchSeq *
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 197--198
+Underfull \hbox (badness 1199) in paragraph at lines 255--256
 []|\OT1/ptm/m/n/10 (\OT1/ptm/m/it/10 SS\OT1/ptm/m/n/10 ) is a com-bin-ing form
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--199
+Underfull \hbox (badness 10000) in paragraph at lines 257--257
 []|\OT1/pcr/m/n/10 Row of StitchSeq
  []
 
 
-Underfull \hbox (badness 1953) in paragraph at lines 199--200
+Underfull \hbox (badness 1953) in paragraph at lines 257--258
 []|\OT1/ptm/m/n/10 A row com-bines mul-ti-ple
  []
 
 
-Underfull \hbox (badness 3199) in paragraph at lines 199--200
+Underfull \hbox (badness 3199) in paragraph at lines 257--258
 \OT1/ptm/m/n/10 stitch se-quences that, to-
  []
 
 
-Overfull \hbox (13.3435pt too wide) in paragraph at lines 179--206
+Overfull \hbox (13.3435pt too wide) in paragraph at lines 237--264
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--211
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 []|\OT1/pcr/m/n/10 Paragraph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--211
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 \OT1/pcr/m/n/10 of String *
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--211
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 []|\OT1/pcr/m/n/10 string *
  []
 
 
-Underfull \hbox (badness 1715) in paragraph at lines 211--212
+Underfull \hbox (badness 1715) in paragraph at lines 269--270
 \OT1/ptm/m/n/10 tions de-fines a para-graph.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--213
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\OT1/pcr/m/n/10 Needle of String
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--213
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\OT1/pcr/m/n/10 string * string
  []
 
 
-Underfull \hbox (badness 7012) in paragraph at lines 213--214
+Underfull \hbox (badness 7012) in paragraph at lines 271--272
 []|\OT1/ptm/m/n/10 The string "nee-dle" fol-
  []
 
 
-Underfull \hbox (badness 6332) in paragraph at lines 215--215
+Underfull \hbox (badness 6332) in paragraph at lines 273--273
 []|\OT1/ptm/m/n/10 "gauge " (\OT1/ptm/m/it/10 stitches,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--215
+Underfull \hbox (badness 10000) in paragraph at lines 273--273
 []|\OT1/pcr/m/n/10 Gauge of Float *
  []
 
 
-Underfull \hbox (badness 2846) in paragraph at lines 215--216
+Underfull \hbox (badness 2846) in paragraph at lines 273--274
 []|\OT1/ptm/m/n/10 The string "gauge " fol-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--216
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
 \OT1/ptm/m/n/10 paren-the-ses com-mu-ni-cates
  []
 
 
-Underfull \hbox (badness 5817) in paragraph at lines 215--216
+Underfull \hbox (badness 5817) in paragraph at lines 273--274
 \OT1/ptm/m/n/10 the ra-tios of stitches to
  []
 
 
-Underfull \hbox (badness 1117) in paragraph at lines 215--216
+Underfull \hbox (badness 1117) in paragraph at lines 273--274
 \OT1/ptm/m/n/10 to ver-ti-cal inches that the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--217
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
 []|\OT1/pcr/m/n/10 Yarn of String *
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--219
+Underfull \hbox (badness 10000) in paragraph at lines 277--277
 []|\OT1/pcr/m/n/10 Header of String
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--219
+Underfull \hbox (badness 10000) in paragraph at lines 277--277
 \OT1/pcr/m/n/10 * Needle * Gauge
  []
 
 
-Underfull \hbox (badness 4316) in paragraph at lines 219--220
+Underfull \hbox (badness 4316) in paragraph at lines 277--278
 []|\OT1/ptm/m/n/10 The header data type is
  []
 
 
-Underfull \hbox (badness 7667) in paragraph at lines 219--220
+Underfull \hbox (badness 7667) in paragraph at lines 277--278
 \OT1/ptm/m/n/10 re-quired in each pat-tern
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 219--220
+Underfull \hbox (badness 1917) in paragraph at lines 277--278
 \OT1/ptm/m/n/10 about the nee-dles, gauge,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--221
+Underfull \hbox (badness 10000) in paragraph at lines 279--279
 []|\OT1/pcr/m/n/10 Document of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--221
+Underfull \hbox (badness 10000) in paragraph at lines 279--279
 \OT1/pcr/m/n/10 Header *
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
+Underfull \hbox (badness 10000) in paragraph at lines 281--281
 []|\OT1/pcr/m/n/10 Program of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
+Underfull \hbox (badness 10000) in paragraph at lines 281--281
 \OT1/pcr/m/n/10 Assignment list
  []
 
 
-Overfull \hbox (37.39287pt too wide) in paragraph at lines 208--228
+Overfull \hbox (37.39287pt too wide) in paragraph at lines 266--286
 [][] 
  []
 
 [5] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 242.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 242.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
  (./specification.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 242.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 242.
-
-
-Package rerunfilecheck Warning: File `specification.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `specification.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  DF3D1B5CEEE21D4C819732ABBCA5E9EF;370.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 242.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 300.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 300.
+Package rerunfilecheck Info: File `specification.out' has not changed.
+(rerunfilecheck)             Checksum: DF3D1B5CEEE21D4C819732ABBCA5E9EF;370.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 300.
  ) 
 Here is how much of TeX's memory you used:
  27821 strings out of 483107
@@ -1202,13 +1201,13 @@ Here is how much of TeX's memory you used:
  42362 multiletter control sequences out of 15000+600000
  543713 words of font info for 46 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 67i,11n,71p,1603b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,11n,71p,1607b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on specification.pdf (6 pages, 69946 bytes).
+Output written on specification.pdf (6 pages, 72583 bytes).
 PDF statistics:
  86 PDF objects out of 1000 (max. 8388607)
  73 compressed objects within 1 object stream
