@@ -1,0 +1,13 @@
+header "Potholder"
+    needle sp "us" 8
+    gauge (5.0, 5.0)
+    yarn "Cotton" 6
+
+pg "Begin"
+    "Cast on 35 stitches.";
+
+pg "Body"
+    repeat +k1, 35;
+
+pg "End"
+    "Cast off and sew in loose end.";

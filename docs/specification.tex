@@ -98,20 +98,72 @@ KnitPick\#++ will automatically create a pdf of your knitting pattern.
 
 \textbf{A.}
 \begin{verbatim}
-    TODO
+header "Potholder"
+    needle sp "us" 8
+    gauge (5.0, 5.0)
+    yarn "Cotton" 6
+
+pg "Begin"
+    "Cast on 35 stitches.";
+
+pg "Body"
+    repeat +k1, 35;
+
+pg "End"
+    "Cast off and sew in loose end.";
 \end{verbatim}
 
 \newpage
 \textbf{B.}
 \begin{verbatim}
-    TODO
+let s = "slip"
+
+header "Chunky Scarf"
+    needle sp "us" 8
+    gauge (4.0,4.0) 
+    yarn "Mohair-merino" 5
+
+
+pg "Beginning Ribbing"
+    "Cast on 64";
+    repeat +(k1p1), 12;
+
+pg "Body"
+    repeat s1, +k1, s1, +p1, 240;
+
+pg "End Ribbing"
+    repeat +(k1p1), 12;
+    "Cast off and sew in ends";
 \end{verbatim}
 
-\newpage
 \textbf{C.}
 \begin{verbatim}
-    TODO
+let tog = "knit two together"
+
+header "Beanie"
+    needle ci "us" 5
+    gauge (8.0, 8.0)
+    yarn "merino" 3
+
+pg "Ribbing"   
+    "Cast on 88 stitches.";
+    "Join stitches in the round.";
+    repeat +(k2p2), 24;
+
+pg "Body"
+    repeat +(k4p4), 4;
+    repeat +(p4k4), 4;
+    "continue in this manner until garment measures 8.5 inches";
+
+pg "Taper"
+    repeat +k1, +(k7tog1), 10;
+
+pg "End"
+    "Cut yarn to about 1 foot long";
+    "Using an embroidery needle, thread together last stitches and tie a knot";
+    "Sew in the ends";
 \end{verbatim}
+\newpage
 
 \subsection{Language Concepts}
 
